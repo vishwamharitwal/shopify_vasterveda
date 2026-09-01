@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#580A15">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {% if page_title %}
+      <title>{{ page_title }} | VastrVeda — Jaipur Royal Ethnic Couture</title>
+    {% else %}
+      <title>VastrVeda — Royal Ethnic Wear Rooted in Jaipur Heritage</title>
+    {% endif %}
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% else %}
+      <meta name="description" content="VastrVeda - Handcrafted Indian Ethnic Wear, Bridal Lehengas, Kurti Sets, and Festive Couture rooted in the royal heritage of Jaipur, Rajasthan.">
+    {% endif %}
+
+    <!-- Google Fonts: Cinzel, Cormorant Garamond, Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Theme Stylesheets -->
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    <!-- Shopify Content For Header -->
+    {{ content_for_header }}
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  </head>
+
+  <body class="template-{{ template.name | default: 'index' }}">
+    <a class="skip-to-content-link" href="#MainContent" style="position: absolute; left: -9999px;">
+      {{ 'general.accessibility.skip_to_content' | t | default: 'Skip to content' }}
+    </a>
+
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+
+    <!-- Royal Cart Drawer -->
+    {% render 'cart-drawer' %}
+
+    <!-- WhatsApp Concierge Support -->
+    <a 
+      href="https://wa.me/{{ settings.social_whatsapp_number | default: '919876543210' }}?text=Hello%20VastrVeda%2C%20I%20would%20like%20to%20inquire%20about%20your%20royal%20ethnic%20collection." 
+      class="whatsapp-float-btn" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      aria-label="Chat with VastrVeda Royal Stylist on WhatsApp"
+    >
+      {% render 'icons', name: 'whatsapp' %}
+    </a>
+  </body>
+</html>

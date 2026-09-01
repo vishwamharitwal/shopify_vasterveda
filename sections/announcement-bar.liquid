@@ -1,0 +1,44 @@
+{% comment %}
+  VastrVeda Announcement Bar Section
+{% endcomment %}
+
+{% if section.settings.show_announcement %}
+  <div class="announcement-bar">
+    <div class="vv-container">
+      <div class="announcement-slider">
+        <span style="color: var(--vv-gold-primary);">{% render 'icons', name: 'lotus' %}</span>
+        <span>{{ section.settings.text_1 | default: 'Free Express Shipping Across India on All Bridal & Festive Orders' }}</span>
+        {% if section.settings.text_2 != blank %}
+          <span style="opacity: 0.5;">|</span>
+          <span>{{ section.settings.text_2 }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "Announcement Text",
+      "default": "Complimentary Royal Delivery Across India | Handcrafted in Jaipur"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "Secondary Highlight",
+      "default": "New Festive Couture 2026 Live"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,82 @@
+{% comment %}
+  VastrVeda Master Cart Page Section
+{% endcomment %}
+
+<section class="cart-page-section" style="padding: 70px 0 100px;">
+  <div class="vv-container" style="max-width: 900px;">
+    <div class="royal-heading-wrapper">
+      <span class="royal-subheading">Your Selections</span>
+      <h1 class="royal-title">Royal Bag</h1>
+      <div class="royal-divider">
+        <span class="royal-divider-line"></span>
+        <span class="royal-divider-icon">{% render 'icons', name: 'lotus' %}</span>
+        <span class="royal-divider-line"></span>
+      </div>
+    </div>
+
+    {% if cart.item_count > 0 %}
+      <form action="/cart" method="post">
+        <div style="background: #FFF; border: 1px solid var(--vv-border-subtle); border-radius: var(--radius-sm); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow-royal-sm);">
+          {% for item in cart.items %}
+            <div style="display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--vv-border-card); align-items: center;">
+              <div style="width: 90px; height: 120px; border-radius: var(--radius-sm); overflow: hidden; background: #eee;">
+                {% if item.image %}
+                  <img src="{{ item.image | image_url: width: 180 }}" alt="{{ item.title | escape }}" style="width: 100%; height: 100%; object-fit: cover;">
+                {% endif %}
+              </div>
+              <div style="flex: 1;">
+                <h3 style="font-family: var(--font-royal); font-size: 1.1rem; color: var(--vv-maroon-deep); margin-bottom: 4px;">
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                </h3>
+                <p style="font-size: 0.85rem; color: var(--vv-text-muted); margin-bottom: 6px;">{{ item.variant.title }}</p>
+                <span style="font-family: var(--font-royal); font-size: 1.1rem; font-weight: 700; color: var(--vv-maroon-primary);">
+                  {{ item.final_line_price | money }}
+                </span>
+              </div>
+              <div style="text-align: right;">
+                <p style="font-size: 0.9rem; margin-bottom: 8px;">Qty: {{ item.quantity }}</p>
+                <a href="/cart/change?line={{ forloop.index }}&quantity=0" style="color: #b91c1c; font-size: 0.8rem; text-decoration: underline;">Remove</a>
+              </div>
+            </div>
+          {% endfor %}
+
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 24px;">
+            <span style="font-family: var(--font-royal); font-size: 1.3rem; font-weight: 700; color: var(--vv-maroon-deep);">Subtotal:</span>
+            <span style="font-family: var(--font-royal); font-size: 1.4rem; font-weight: 700; color: var(--vv-maroon-primary);">{{ cart.total_price | money }}</span>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; gap: 20px;">
+          <a href="/collections/all" class="btn-royal-outline" style="color: var(--vv-maroon-deep); border-color: var(--vv-maroon-primary); background: transparent;">
+            Continue Exploring
+          </a>
+          <button type="submit" name="checkout" class="btn-royal-gold" style="border: none;">
+            Proceed to Royal Checkout
+          </button>
+        </div>
+      </form>
+    {% else %}
+      <div style="text-align: center; padding: 70px 20px; background: #FFF; border: 1px solid var(--vv-border-subtle); border-radius: var(--radius-sm);">
+        <span style="color: var(--vv-gold-primary); font-size: 2.5rem; display: inline-block; margin-bottom: 16px;">
+          {% render 'icons', name: 'lotus' %}
+        </span>
+        <h2 style="font-family: var(--font-royal); font-size: 1.6rem; color: var(--vv-maroon-deep); margin-bottom: 10px;">
+          Your Royal Bag is Empty
+        </h2>
+        <p style="color: var(--vv-text-muted); margin-bottom: 30px;">
+          Explore our handcrafted Rajasthani Lehengas, Kurti Sets & Wedding Couture.
+        </p>
+        <a href="/collections/all" class="btn-royal-gold">
+          Explore Collections
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart Page",
+  "settings": []
+}
+{% endschema %}

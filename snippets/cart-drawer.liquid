@@ -1,0 +1,81 @@
+{% comment %}
+  VastrVeda Royal Ajax Cart Drawer Snippet
+  Usage: {% render 'cart-drawer' %}
+{% endcomment %}
+
+<div class="cart-drawer-overlay"></div>
+
+<div class="cart-drawer" id="CartDrawer" aria-modal="true" role="dialog" aria-label="Royal Bag">
+  <div class="cart-drawer-header">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="color: var(--vv-gold-primary);">{% render 'icons', name: 'lotus' %}</span>
+      <h2 class="cart-drawer-title">{{ 'sections.cart.title' | t | default: 'Your Royal Bag' }}</h2>
+    </div>
+    <button type="button" class="header-action-btn" data-cart-close aria-label="Close Cart" style="color: var(--vv-gold-light);">
+      {% render 'icons', name: 'close' %}
+    </button>
+  </div>
+
+  <div class="cart-drawer-body" id="CartDrawerBody">
+    {% if cart.item_count > 0 %}
+      <div class="cart-items-list" style="display: flex; flex-direction: column; gap: 20px;">
+        {% for item in cart.items %}
+          <div class="cart-item-row" style="display: flex; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--vv-border-subtle);">
+            <div style="width: 80px; height: 105px; border-radius: var(--radius-sm); overflow: hidden; background: #eee; flex-shrink: 0;">
+              {% if item.image %}
+                <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" style="width: 100%; height: 100%; object-fit: cover;">
+              {% endif %}
+            </div>
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h4 style="font-family: var(--font-royal); font-size: 0.95rem; margin-bottom: 4px;">
+                  <a href="{{ item.url }}" style="color: var(--vv-charcoal);">{{ item.product.title }}</a>
+                </h4>
+                {% unless item.variant.title contains 'Default' %}
+                  <p style="font-size: 0.8rem; color: var(--vv-text-muted);">{{ item.variant.title }}</p>
+                {% endunless %}
+                <span style="font-weight: 700; color: var(--vv-maroon-primary); font-size: 0.95rem;">{{ item.final_line_price | money }}</span>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
+                <span style="font-size: 0.82rem; color: var(--vv-text-muted);">Qty: {{ item.quantity }}</span>
+                <a href="/cart/change?line={{ forloop.index }}&quantity=0" style="font-size: 0.75rem; color: #b91c1c; text-decoration: underline;">Remove</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="text-align: center; padding: 60px 20px;">
+        <span style="color: var(--vv-gold-primary); font-size: 2rem; display: inline-block; margin-bottom: 16px;">
+          {% render 'icons', name: 'lotus' %}
+        </span>
+        <h3 style="font-family: var(--font-royal); font-size: 1.25rem; color: var(--vv-maroon-deep); margin-bottom: 8px;">
+          {{ 'sections.cart.empty' | t | default: 'Your Royal Bag is Empty' }}
+        </h3>
+        <p style="font-size: 0.88rem; color: var(--vv-text-muted); margin-bottom: 24px;">
+          Explore our handcrafted Rajasthani Lehengas & Kurti Sets.
+        </p>
+        <a href="/collections/all" class="btn-royal-gold" data-cart-close>
+          {{ 'sections.cart.continue_shopping' | t | default: 'Explore Collections' }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+  {% if cart.item_count > 0 %}
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row">
+        <span>{{ 'sections.cart.subtotal' | t | default: 'Subtotal' }}</span>
+        <span>{{ cart.total_price | money }}</span>
+      </div>
+      <p style="font-size: 0.78rem; color: var(--vv-text-muted); margin-bottom: 16px; text-align: center;">
+        Taxes and complimentary royal shipping calculated at checkout.
+      </p>
+      <form action="/checkout" method="post">
+        <button type="submit" class="btn-royal-gold" style="width: 100%; border: none;">
+          {{ 'sections.cart.checkout' | t | default: 'Proceed to Royal Checkout' }}
+        </button>
+      </form>
+    </div>
+  {% endif %}
+</div>

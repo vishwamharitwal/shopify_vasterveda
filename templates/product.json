@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "trust_badges": {
+      "type": "trust-badges",
+      "settings": {}
+    },
+    "heritage_story": {
+      "type": "heritage-story",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "trust_badges",
+    "heritage_story"
+  ]
+}

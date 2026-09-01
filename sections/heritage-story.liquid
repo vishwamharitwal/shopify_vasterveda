@@ -1,0 +1,83 @@
+{% comment %}
+  VastrVeda Brand Heritage & Jaipur Artistry Section
+{% endcomment %}
+
+<section class="heritage-story-section">
+  <div class="vv-container">
+    <div class="heritage-grid">
+      <!-- Story Content -->
+      <div class="heritage-story-content">
+        <div class="hero-badge" style="background: rgba(212, 175, 55, 0.12); margin-bottom: 20px;">
+          {% render 'icons', name: 'needle' %}
+          <span>Ancestral Karigari • Jaipur, Rajasthan</span>
+        </div>
+
+        <h2 style="font-family: var(--font-royal); font-size: 2.5rem; color: #FFF; margin-bottom: 20px; line-height: 1.2;">
+          Rooted in Heritage, <br>
+          <span class="gold-gradient-text">Crafted for Royalty</span>
+        </h2>
+
+        <blockquote class="heritage-quote">
+          "Every weave in VastrVeda tells a story of the Pink City — of royal courts, imperial celebrations, and timeless Jaipuri needlework."
+        </blockquote>
+
+        <p class="heritage-desc">
+          Born in the historic heart of Jaipur, VastrVeda bridges royal Rajasthani heritage with modern haute couture. From grand bridal lehengas adorned with hand-laid Gota Patti and antique Zardozi to breezy pure silk kurti sets, our artisans pour weeks of generational skill into every single creation.
+        </p>
+
+        <div class="heritage-pillars">
+          <div class="pillar-item">
+            <span class="pillar-number">100%</span>
+            <span class="pillar-label">Jaipuri Karigari</span>
+          </div>
+          <div class="pillar-item">
+            <span class="pillar-number">Pure</span>
+            <span class="pillar-label">Silk & Metallic Zari</span>
+          </div>
+          <div class="pillar-item">
+            <span class="pillar-number">Custom</span>
+            <span class="pillar-label">Bridal Fitting</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 36px;">
+          <a href="/pages/our-story" class="btn-royal-gold">
+            <span>Discover Our Story</span>
+            {% render 'icons', name: 'chevron-right' %}
+          </a>
+        </div>
+      </div>
+
+      <!-- Image Display -->
+      <div class="heritage-gallery-frame">
+        <img 
+          src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80" 
+          alt="Jaipur Royal Karigari VastrVeda" 
+          class="heritage-main-img"
+          loading="lazy"
+          width="800"
+          height="600"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heritage Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Rooted in Heritage, Crafted for Royalty"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heritage Story"
+    }
+  ]
+}
+{% endschema %}

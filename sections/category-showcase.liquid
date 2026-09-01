@@ -1,0 +1,136 @@
+{% comment %}
+  VastrVeda Royal Category Showcase (Jharokha Arch Grid)
+{% endcomment %}
+
+<section class="category-section">
+  <div class="vv-container">
+    <div class="royal-heading-wrapper">
+      <span class="royal-subheading">{{ section.settings.subheading | default: 'The Royal Wardrobe' }}</span>
+      <h2 class="royal-title">{{ section.settings.title | default: 'Curated Jaipur Collections' }}</h2>
+      <div class="royal-divider">
+        <span class="royal-divider-line"></span>
+        <span class="royal-divider-icon">{% render 'icons', name: 'lotus' %}</span>
+        <span class="royal-divider-line"></span>
+      </div>
+    </div>
+
+    <div class="category-grid">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link | default: '/collections/all' }}" class="category-card" {{ block.shopify_attributes }}>
+          <div class="category-img-box">
+            {% if block.settings.image != blank %}
+              <img 
+                src="{{ block.settings.image | image_url: width: 600 }}" 
+                alt="{{ block.settings.title | escape }}" 
+                class="category-img"
+                loading="lazy"
+                width="600"
+                height="800"
+              >
+            {% else %}
+              {% case forloop.index %}
+                {% when 1 %}
+                  <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" alt="Wedding Wears" class="category-img" loading="lazy" width="600" height="800">
+                {% when 2 %}
+                  <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80" alt="Kurti Sets" class="category-img" loading="lazy" width="600" height="800">
+                {% when 3 %}
+                  <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80" alt="Royal Lehengas" class="category-img" loading="lazy" width="600" height="800">
+                {% else %}
+                  <img src="https://images.unsplash.com/photo-1594913785162-e67866e4a282?auto=format&fit=crop&w=600&q=80" alt="Festive Wears" class="category-img" loading="lazy" width="600" height="800">
+              {% endcase %}
+            {% endif %}
+          </div>
+          <div class="category-overlay">
+            <h3 class="category-title">{{ block.settings.title }}</h3>
+            <span class="category-link-text">{{ block.settings.subtitle | default: 'Explore Creation' }} →</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Category Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Section Subheading",
+      "default": "The Royal Wardrobe"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Curated Jaipur Collections"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category_item",
+      "name": "Category Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Category Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "default": "Wedding Wears"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle / Tag",
+          "default": "Bridal & Heritage Sets"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Category Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Showcase",
+      "blocks": [
+        {
+          "type": "category_item",
+          "settings": {
+            "title": "Wedding Wears",
+            "subtitle": "Bridal Couture"
+          }
+        },
+        {
+          "type": "category_item",
+          "settings": {
+            "title": "Kurti Sets",
+            "subtitle": "Handcrafted Silhouettes"
+          }
+        },
+        {
+          "type": "category_item",
+          "settings": {
+            "title": "Royal Lehengas",
+            "subtitle": "Zari & Resham Work"
+          }
+        },
+        {
+          "type": "category_item",
+          "settings": {
+            "title": "Festive Wears",
+            "subtitle": "Shararas & Anarkalis"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

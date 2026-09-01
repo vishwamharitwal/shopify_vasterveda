@@ -1,0 +1,88 @@
+{
+  "sections": {
+    "hero_banner": {
+      "type": "hero-banner",
+      "settings": {
+        "badge_text": "Rooted in Indian Heritage • Jaipur, Rajasthan",
+        "heading": "Timeless Grace, Imperial Couture",
+        "subheading": "Handcrafted bridal lehengas, festive ensembles, and royal kurti sets sculpted with ancestral Rajasthani artistry.",
+        "primary_btn_text": "Explore Wedding Couture",
+        "primary_btn_link": "/collections/wedding-wear",
+        "secondary_btn_text": "Kurti Sets & Festive",
+        "secondary_btn_link": "/collections/kurti-sets"
+      }
+    },
+    "trust_badges": {
+      "type": "trust-badges",
+      "settings": {}
+    },
+    "category_showcase": {
+      "type": "category-showcase",
+      "blocks": {
+        "cat_1": {
+          "type": "category_item",
+          "settings": {
+            "title": "Wedding Wears",
+            "subtitle": "Bridal Couture & Gowns",
+            "link": "/collections/wedding-wear"
+          }
+        },
+        "cat_2": {
+          "type": "category_item",
+          "settings": {
+            "title": "Kurti Sets",
+            "subtitle": "Handcrafted Silhouettes",
+            "link": "/collections/kurti-sets"
+          }
+        },
+        "cat_3": {
+          "type": "category_item",
+          "settings": {
+            "title": "Royal Lehengas",
+            "subtitle": "Zari & Pure Velvet",
+            "link": "/collections/lehengas"
+          }
+        },
+        "cat_4": {
+          "type": "category_item",
+          "settings": {
+            "title": "Festive Wears",
+            "subtitle": "Shararas & Anarkalis",
+            "link": "/collections/festive-wear"
+          }
+        }
+      },
+      "block_order": [
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4"
+      ],
+      "settings": {
+        "subheading": "The Royal Wardrobe",
+        "title": "Curated Jaipur Collections"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "subheading": "Festive & Wedding Edit",
+        "title": "Trending Masterpieces",
+        "products_to_show": 8
+      }
+    },
+    "heritage_story": {
+      "type": "heritage-story",
+      "settings": {
+        "heading": "Rooted in Heritage, Crafted for Royalty"
+      }
+    }
+  },
+  "order": [
+    "hero_banner",
+    "trust_badges",
+    "category_showcase",
+    "featured_collection",
+    "heritage_story"
+  ]
+}

@@ -1,0 +1,126 @@
+{% comment %}
+  VastrVeda Master Header & Navigation Section
+{% endcomment %}
+
+<header class="header-wrapper">
+  <div class="vv-container">
+    <div class="header-inner">
+      <!-- Left Navigation Menu -->
+      <nav class="header-nav-left" aria-label="Main Navigation">
+        {% for link in linklists.main-menu.links %}
+          <a href="{{ link.url }}" class="nav-link {% if link.active %}active{% endif %}">
+            {{ link.title }}
+          </a>
+        {% else %}
+          <!-- Default Fallback Links if Menu not configured in Shopify Admin -->
+          <a href="/collections/wedding-wear" class="nav-link has-badge">
+            Wedding Couture
+            <span class="nav-badge-hot">Royalty</span>
+          </a>
+          <a href="/collections/lehengas" class="nav-link">Lehengas</a>
+          <a href="/collections/kurti-sets" class="nav-link">Kurti Sets</a>
+          <a href="/collections/festive-wear" class="nav-link">Festive Wears</a>
+          <a href="/pages/jaipur-heritage" class="nav-link">Our Heritage</a>
+        {% endfor %}
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-toggle" id="MobileMenuBtn" aria-label="Open Navigation Menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Center Logo & Branding -->
+      <div class="header-logo-center">
+        <a href="/" class="brand-logo-text" aria-label="VastrVeda Home">
+          {% if section.settings.logo != blank %}
+            <img src="{{ section.settings.logo | image_url: width: 340 }}" alt="{{ shop.name }}" width="{{ section.settings.logo_width }}" height="auto">
+          {% else %}
+            <span>{% render 'icons', name: 'lotus' %}</span>
+            <span class="gold-gradient-text">VastrVeda</span>
+          {% endif %}
+        </a>
+        <span class="brand-tagline">Jaipur • Rajasthan</span>
+      </div>
+
+      <!-- Right Action Icons -->
+      <div class="header-actions-right">
+        <a href="/search" class="header-action-btn" aria-label="Search">
+          {% render 'icons', name: 'search' %}
+        </a>
+        
+        <a href="/account" class="header-action-btn" aria-label="Account">
+          {% render 'icons', name: 'user' %}
+        </a>
+
+        <button type="button" class="header-action-btn" data-cart-trigger aria-label="Cart">
+          {% render 'icons', name: 'cart' %}
+          <span class="cart-count-bubble">{{ cart.item_count }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-nav-drawer" id="MobileNavDrawer" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999;">
+  <div style="width: 300px; height: 100%; background: #FCFAF6; padding: 24px; display: flex; flex-direction: column; gap: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--vv-border-subtle); padding-bottom: 12px;">
+      <span style="font-family: var(--font-royal); font-weight: 700; color: var(--vv-maroon-primary);">VastrVeda</span>
+      <button type="button" id="CloseMobileNav" style="font-size: 1.2rem; color: var(--vv-maroon-deep);">✕</button>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 16px; font-family: var(--font-royal); font-size: 0.95rem;">
+      <a href="/collections/wedding-wear" style="color: var(--vv-maroon-primary); font-weight: 600;">✨ Wedding Wears</a>
+      <a href="/collections/lehengas" style="color: var(--vv-charcoal);">👗 Lehengas</a>
+      <a href="/collections/kurti-sets" style="color: var(--vv-charcoal);">✨ Kurti Sets</a>
+      <a href="/collections/festive-wear" style="color: var(--vv-charcoal);">🎉 Festive Wears</a>
+      <a href="/pages/jaipur-heritage" style="color: var(--vv-charcoal);">📍 Jaipur Heritage</a>
+      <a href="/account" style="color: var(--vv-charcoal);">👤 My Account</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobBtn = document.getElementById('MobileMenuBtn');
+    const mobDrawer = document.getElementById('MobileNavDrawer');
+    const closeMob = document.getElementById('CloseMobileNav');
+    if (mobBtn && mobDrawer) {
+      mobBtn.addEventListener('click', () => { mobDrawer.style.display = 'block'; });
+      if (closeMob) closeMob.addEventListener('click', () => { mobDrawer.style.display = 'none'; });
+      mobDrawer.addEventListener('click', (e) => { if (e.target === mobDrawer) mobDrawer.style.display = 'none'; });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Custom Logo Image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 100,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo Width",
+      "default": 170
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,88 @@
+{% comment %}
+  VastrVeda Royal Footer Section
+{% endcomment %}
+
+<footer class="royal-footer">
+  <div class="vv-container">
+    <div class="footer-grid">
+      <!-- Col 1: Brand -->
+      <div>
+        <h3 class="footer-brand-title">
+          <span style="color: var(--vv-gold-primary); vertical-align: middle;">{% render 'icons', name: 'lotus' %}</span>
+          <span>VastrVeda</span>
+        </h3>
+        <p class="footer-brand-desc">
+          Rooted in the timeless grandeur of Jaipur, Rajasthan. Celebrating royal Indian heritage through exquisite wedding wears, handcrafted lehengas, and royal kurti sets.
+        </p>
+        <p style="font-size: 0.85rem; color: var(--vv-gold-light); display: flex; align-items: center; gap: 8px;">
+          <span>📍</span>
+          <span>Jaipur, Rajasthan — 302001, India</span>
+        </p>
+      </div>
+
+      <!-- Col 2: Quick Links / Collections -->
+      <div>
+        <h4 class="footer-heading">Royal Collections</h4>
+        <ul class="footer-links-list">
+          <li><a href="/collections/wedding-wear" class="footer-link">Wedding Couture</a></li>
+          <li><a href="/collections/lehengas" class="footer-link">Bridal Lehengas</a></li>
+          <li><a href="/collections/kurti-sets" class="footer-link">Royal Kurti Sets</a></li>
+          <li><a href="/collections/festive-wear" class="footer-link">Festive Celebrations</a></li>
+          <li><a href="/collections/new-arrivals" class="footer-link">New Arrivals 2026</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Customer Care -->
+      <div>
+        <h4 class="footer-heading">Client Services</h4>
+        <ul class="footer-links-list">
+          <li><a href="/pages/custom-bridal-sizing" class="footer-link">Bespoke Bridal Sizing</a></li>
+          <li><a href="/pages/shipping-policy" class="footer-link">Complimentary Shipping</a></li>
+          <li><a href="/pages/fabric-care" class="footer-link">Silk & Zari Care Guide</a></li>
+          <li><a href="/pages/contact-us" class="footer-link">Connect with Stylist</a></li>
+          <li><a href="/pages/faq" class="footer-link">Royal FAQs</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Newsletter -->
+      <div>
+        <h4 class="footer-heading">Join The Royalty</h4>
+        <p style="font-size: 0.86rem; color: rgba(236, 229, 216, 0.75); line-height: 1.6;">
+          Receive exclusive invitations to preview new bridal launches, festive edits, and royal salon viewings.
+        </p>
+        
+        <form method="post" action="/contact#contact_form" class="newsletter-box">
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="utf8" value="✓">
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input 
+            type="email" 
+            name="contact[email]" 
+            class="newsletter-input" 
+            placeholder="Enter your royal email..." 
+            required 
+            aria-label="Email address"
+          >
+          <button type="submit" class="newsletter-submit">Join</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Row -->
+    <div class="footer-bottom-row">
+      <p>© {{ 'now' | date: '%Y' }} VastrVeda. All Rights Reserved. Crafted with Royal Pride in Jaipur.</p>
+      <div style="display: flex; gap: 20px;">
+        <a href="/policies/privacy-policy" style="color: inherit;">Privacy Policy</a>
+        <a href="/policies/terms-of-service" style="color: inherit;">Terms of Service</a>
+        <a href="/policies/refund-policy" style="color: inherit;">Refunds</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

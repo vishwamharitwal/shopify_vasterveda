@@ -1,0 +1,39 @@
+{
+  "general": {
+    "accessibility": {
+      "close": "Close",
+      "skip_to_content": "Skip to content"
+    },
+    "search": {
+      "search": "Search royalty..."
+    },
+    "newsletter": {
+      "title": "Join the Royalty",
+      "subtitle": "Be the first to receive updates on bespoke bridal collections, festive couture, and exclusive palace privileges.",
+      "button_label": "Subscribe",
+      "success": "Welcome to VastrVeda Inner Circle."
+    }
+  },
+  "sections": {
+    "header": {
+      "cart_count": "Cart"
+    },
+    "cart": {
+      "title": "Your Royal Bag",
+      "empty": "Your bag is currently empty.",
+      "continue_shopping": "Explore Creations",
+      "checkout": "Proceed to Royal Checkout",
+      "subtotal": "Subtotal"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Bag",
+      "sold_out": "Sold Out",
+      "quick_view": "Quick View",
+      "view_full_details": "View Full Details",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price"
+    }
+  }
+}
