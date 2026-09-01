@@ -21,8 +21,12 @@
 
     <!-- Collection Grid -->
     <div class="product-grid">
-      {% if collection.products_count > 0 %}
+      {% if collection.products.size > 0 %}
         {% for product in collection.products %}
+          {% render 'card-product', product: product %}
+        {% endfor %}
+      {% elsif collections.all.products.size > 0 %}
+        {% for product in collections.all.products %}
           {% render 'card-product', product: product %}
         {% endfor %}
       {% else %}
