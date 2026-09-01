@@ -1,5 +1,5 @@
 {% comment %}
-  VastrVeda Editorial Featured Collection Section
+  VastrVeda Editorial Featured Collection (Taste + Impeccable Double-Bezel)
 {% endcomment %}
 
 <section class="products-section">
@@ -31,7 +31,7 @@
         {% assign mock_images = "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=85,https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=85,https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=700&q=85,https://images.unsplash.com/photo-1594913785162-e67866e4a282?auto=format&fit=crop&w=700&q=85" | split: "," %}
 
         {% for i in (0..3) %}
-          <div class="product-card">
+          <div class="product-card-shell">
             <div class="product-media-container">
               <span class="product-badge-pill">COUTURE</span>
               <button type="button" class="product-wishlist-btn" aria-label="Save">
@@ -61,8 +61,13 @@
     </div>
 
     <div style="text-align: center; margin-top: 60px;">
-      <a href="{{ selected_col.url | default: '/collections/all' }}" class="btn-editorial-primary">
+      <a href="{{ selected_col.url | default: '/collections/all' }}" class="btn-couture-primary">
         <span>View Full Collection</span>
+        <span class="btn-icon-bubble">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </span>
       </a>
     </div>
   </div>

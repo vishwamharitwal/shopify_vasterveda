@@ -1,34 +1,42 @@
 /* ==========================================================================
    VastrVeda - Haute Couture & Heritage (Jaipur Atelier)
-   Sabyasachi / Editorial Luxury Design System
+   Awwwards / Agency-Tier Design System (Taste + Impeccable Polish)
    ========================================================================== */
 
 :root {
   /* Editorial Palette */
-  --vv-noir: #0E0C0D;
-  --vv-noir-soft: #181516;
-  --vv-maroon-editorial: #3B040B;
-  --vv-crimson-velvet: #5A0713;
+  --vv-noir: #0C0A0B;
+  --vv-noir-soft: #161314;
+  --vv-noir-card: #1F1B1C;
+  --vv-crimson-velvet: #580A15;
+  --vv-crimson-deep: #3A0208;
   
   --vv-champagne-gold: #C5A880;
   --vv-gold-muted: #D9C3A5;
-  --vv-gold-hairline: rgba(197, 168, 128, 0.35);
+  --vv-gold-hairline: rgba(197, 168, 128, 0.28);
+  --vv-gold-glow: rgba(197, 168, 128, 0.12);
   
   --vv-linen-bg: #FAF8F5;
-  --vv-linen-surface: #F3EFEA;
+  --vv-linen-surface: #F4EFEB;
   --vv-linen-card: #FFFFFF;
   
   --vv-charcoal: #1C191A;
-  --vv-text-dim: #7A7274;
+  --vv-text-muted: #736B6D;
   --vv-border-fine: rgba(28, 25, 26, 0.08);
 
   /* Typography */
   --font-editorial: 'Cormorant Garamond', Didot, 'Playfair Display', serif;
   --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Transitions */
-  --ease-editorial: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-fast: all 0.25s ease;
+  /* Elevation & Double-Bezel Radius */
+  --radius-outer: 16px;
+  --radius-inner: 12px;
+  --radius-pill: 9999px;
+  
+  /* Physics-Based Motion Curves */
+  --ease-couture: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-fast: all 0.2s ease;
 }
 
 /* Reset & Global */
@@ -48,9 +56,10 @@ body {
   font-family: var(--font-sans);
   background-color: var(--vv-linen-bg);
   color: var(--vv-charcoal);
-  line-height: 1.65;
+  line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img, svg, video {
@@ -75,7 +84,7 @@ button {
 .vv-container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 48px;
 }
 
 @media (max-width: 768px) {
@@ -84,37 +93,32 @@ button {
   }
 }
 
-/* Refined Editorial Typography */
-.font-editorial {
-  font-family: var(--font-editorial);
-}
-
-.text-gold {
-  color: var(--vv-champagne-gold);
-}
-
 /* Editorial Section Header */
 .editorial-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 72px;
 }
 
 .editorial-tag {
   font-family: var(--font-sans);
   font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--vv-champagne-gold);
-  margin-bottom: 12px;
-  display: block;
+  margin-bottom: 14px;
+  display: inline-block;
+  padding: 4px 14px;
+  background: rgba(197, 168, 128, 0.1);
+  border: 1px solid var(--vv-gold-hairline);
+  border-radius: var(--radius-pill);
 }
 
 .editorial-title {
   font-family: var(--font-editorial);
-  font-size: 2.8rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
+  font-size: 3.2rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
   color: var(--vv-noir);
   text-transform: uppercase;
   line-height: 1.15;
@@ -122,32 +126,24 @@ button {
 
 .editorial-title em {
   font-style: italic;
-  font-family: var(--font-editorial);
+  font-weight: 400;
   color: var(--vv-crimson-velvet);
 }
 
-.editorial-subtext {
-  font-family: var(--font-editorial);
-  font-size: 1.15rem;
-  font-style: italic;
-  color: var(--vv-text-dim);
-  max-width: 600px;
-  margin: 12px auto 0;
-}
-
 .editorial-divider {
-  width: 40px;
+  width: 50px;
   height: 1px;
   background: var(--vv-champagne-gold);
-  margin: 18px auto 0;
+  margin: 20px auto 0;
 }
 
-/* High-End Minimalist Buttons */
-.btn-editorial-primary {
+/* ==========================================================================
+   High-End Button-in-Button Architecture (Taste Standard)
+   ========================================================================== */
+.btn-couture-primary {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  gap: 16px;
   background: var(--vv-noir);
   color: #FAF8F5;
   border: 1px solid var(--vv-noir);
@@ -156,46 +152,64 @@ button {
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  padding: 16px 36px;
-  transition: var(--ease-editorial);
+  padding: 14px 24px 14px 32px;
+  border-radius: var(--radius-pill);
+  transition: var(--ease-couture);
 }
 
-.btn-editorial-primary:hover {
-  background: var(--vv-crimson-velvet);
-  border-color: var(--vv-crimson-velvet);
-  color: #FFF;
-  transform: translateY(-2px);
-}
-
-.btn-editorial-outline {
-  display: inline-flex;
+.btn-couture-primary .btn-icon-bubble {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(250, 248, 245, 0.15);
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  transition: var(--ease-spring);
+}
+
+.btn-couture-primary:hover {
+  background: var(--vv-crimson-velvet);
+  border-color: var(--vv-crimson-velvet);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(88, 10, 21, 0.25);
+}
+
+.btn-couture-primary:hover .btn-icon-bubble {
+  background: #FFF;
+  color: var(--vv-crimson-velvet);
+  transform: translateX(4px);
+}
+
+.btn-couture-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
   background: transparent;
   color: #FAF8F5;
-  border: 1px solid rgba(250, 248, 245, 0.4);
+  border: 1px solid rgba(250, 248, 245, 0.35);
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  padding: 16px 36px;
+  padding: 14px 32px;
+  border-radius: var(--radius-pill);
   backdrop-filter: blur(8px);
-  transition: var(--ease-editorial);
+  transition: var(--ease-couture);
 }
 
-.btn-editorial-outline:hover {
+.btn-couture-outline:hover {
   background: #FAF8F5;
   color: var(--vv-noir);
   border-color: #FAF8F5;
+  transform: translateY(-2px);
 }
 
-.btn-editorial-gold {
+.btn-couture-gold {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  gap: 16px;
   background: var(--vv-champagne-gold);
   color: var(--vv-noir);
   border: 1px solid var(--vv-champagne-gold);
@@ -204,65 +218,89 @@ button {
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  padding: 16px 36px;
-  transition: var(--ease-editorial);
+  padding: 14px 24px 14px 32px;
+  border-radius: var(--radius-pill);
+  transition: var(--ease-couture);
 }
 
-.btn-editorial-gold:hover {
+.btn-couture-gold .btn-icon-bubble {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--vv-noir);
+  color: var(--vv-champagne-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--ease-spring);
+}
+
+.btn-couture-gold:hover {
   background: var(--vv-noir);
   color: var(--vv-champagne-gold);
   border-color: var(--vv-noir);
+  transform: translateY(-2px);
 }
 
-/* Announcement Bar */
+.btn-couture-gold:hover .btn-icon-bubble {
+  background: var(--vv-champagne-gold);
+  color: var(--vv-noir);
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Announcement Bar
+   ========================================================================== */
 .announcement-bar {
   background: var(--vv-noir);
   color: var(--vv-gold-muted);
   padding: 10px 0;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: 500;
-  border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.15);
   text-align: center;
 }
 
-/* Header & Navigation */
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
 .header-wrapper {
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(250, 248, 245, 0.96);
-  backdrop-filter: blur(16px);
+  background: rgba(250, 248, 245, 0.95);
+  backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--vv-border-fine);
   z-index: 100;
-  transition: var(--ease-editorial);
+  transition: var(--ease-couture);
 }
 
 .header-wrapper.scrolled {
   background: #FAF8F5;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
 .header-inner {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  height: 90px;
+  height: 94px;
 }
 
 .header-nav-left {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 36px;
 }
 
 .nav-link {
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--vv-charcoal);
   position: relative;
@@ -277,7 +315,7 @@ button {
   width: 0;
   height: 1px;
   background: var(--vv-noir);
-  transition: var(--ease-editorial);
+  transition: var(--ease-couture);
 }
 
 .nav-link:hover::after {
@@ -290,9 +328,9 @@ button {
 
 .brand-logo-text {
   font-family: var(--font-editorial);
-  font-size: 2.3rem;
+  font-size: 2.4rem;
   font-weight: 400;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   color: var(--vv-noir);
   text-transform: uppercase;
 }
@@ -300,18 +338,18 @@ button {
 .brand-tagline {
   display: block;
   font-family: var(--font-sans);
-  font-size: 0.62rem;
-  letter-spacing: 0.32em;
+  font-size: 0.6rem;
+  letter-spacing: 0.36em;
   text-transform: uppercase;
   color: var(--vv-champagne-gold);
-  margin-top: -2px;
+  margin-top: -3px;
 }
 
 .header-actions-right {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 24px;
+  gap: 28px;
 }
 
 .mobile-menu-toggle {
@@ -327,10 +365,12 @@ button {
   align-items: center;
   position: relative;
   padding: 6px;
+  transition: var(--ease-fast);
 }
 
 .header-action-btn:hover {
   color: var(--vv-champagne-gold);
+  transform: translateY(-1px);
 }
 
 .cart-count-bubble {
@@ -363,16 +403,16 @@ button {
     height: 76px;
   }
   .brand-logo-text {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
   }
 }
 
 /* ==========================================================================
-   Hero Section - Haute Couture Full-Bleed Editorial
+   Hero Section - Full-Bleed Editorial
    ========================================================================== */
 .hero-editorial-section {
   position: relative;
-  min-height: 90vh;
+  min-height: 92vh;
   display: flex;
   align-items: center;
   background-color: var(--vv-noir);
@@ -385,7 +425,7 @@ button {
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.35;
+  opacity: 0.38;
   object-fit: cover;
   filter: brightness(0.85);
 }
@@ -393,34 +433,23 @@ button {
 .hero-editorial-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(14, 12, 13, 0.4) 0%, rgba(14, 12, 13, 0.92) 100%);
+  background: radial-gradient(circle at center, rgba(12, 10, 11, 0.3) 0%, rgba(12, 10, 11, 0.94) 100%);
 }
 
 .hero-editorial-content {
   position: relative;
   z-index: 2;
   text-align: center;
-  max-width: 880px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 100px 20px;
-}
-
-.hero-editorial-tag {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--vv-champagne-gold);
-  margin-bottom: 24px;
-  display: inline-block;
+  padding: 120px 20px;
 }
 
 .hero-editorial-title {
   font-family: var(--font-editorial);
-  font-size: 4.5rem;
+  font-size: 4.8rem;
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 24px;
@@ -434,13 +463,13 @@ button {
 
 .hero-editorial-desc {
   font-family: var(--font-editorial);
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   font-style: italic;
   font-weight: 300;
-  line-height: 1.5;
+  line-height: 1.55;
   color: rgba(250, 248, 245, 0.85);
-  max-width: 640px;
-  margin: 0 auto 40px;
+  max-width: 680px;
+  margin: 0 auto 44px;
 }
 
 .hero-editorial-ctas {
@@ -451,25 +480,42 @@ button {
 }
 
 /* ==========================================================================
-   Category Showcase - Vogue Editorial Grid
+   Category Showcase - Double-Bezel Architecture
    ========================================================================== */
 .category-section {
-  padding: 120px 0;
+  padding: 130px 0;
   background: var(--vv-linen-bg);
 }
 
 .category-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  gap: 32px;
 }
 
+/* Outer Shell (Double-Bezel) */
+.category-shell {
+  background: rgba(28, 25, 26, 0.03);
+  border: 1px solid var(--vv-border-fine);
+  padding: 8px;
+  border-radius: var(--radius-outer);
+  transition: var(--ease-couture);
+}
+
+.category-shell:hover {
+  transform: translateY(-8px);
+  border-color: var(--vv-champagne-gold);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* Inner Core */
 .category-card {
   position: relative;
   display: block;
   overflow: hidden;
   background: #EFEBE4;
-  aspect-ratio: 3 / 4.4;
+  border-radius: var(--radius-inner);
+  aspect-ratio: 3 / 4.5;
 }
 
 .category-img-box {
@@ -486,7 +532,7 @@ button {
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.category-card:hover .category-img {
+.category-shell:hover .category-img {
   transform: scale(1.06);
 }
 
@@ -495,16 +541,15 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 30px 24px;
-  background: linear-gradient(180deg, transparent 0%, rgba(14, 12, 13, 0.85) 100%);
+  padding: 32px 24px;
+  background: linear-gradient(180deg, transparent 0%, rgba(12, 10, 11, 0.88) 100%);
   color: #FFF;
   text-align: center;
-  transition: var(--ease-editorial);
 }
 
 .category-title {
   font-family: var(--font-editorial);
-  font-size: 1.6rem;
+  font-size: 1.65rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -514,17 +559,17 @@ button {
 .category-subtitle {
   font-family: var(--font-sans);
   font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
+  font-weight: 600;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--vv-champagne-gold);
 }
 
 /* ==========================================================================
-   Product Grid - Clean High-Fashion Display
+   Product Grid - High-Fashion Editorial
    ========================================================================== */
 .products-section {
-  padding: 120px 0;
+  padding: 130px 0;
   background: #FFFFFF;
   border-top: 1px solid var(--vv-border-fine);
   border-bottom: 1px solid var(--vv-border-fine);
@@ -536,20 +581,29 @@ button {
   gap: 36px;
 }
 
-.product-card {
-  position: relative;
+/* Product Outer Shell */
+.product-card-shell {
+  background: rgba(28, 25, 26, 0.02);
+  border: 1px solid var(--vv-border-fine);
+  padding: 10px;
+  border-radius: var(--radius-outer);
   display: flex;
   flex-direction: column;
-  background: #FFFFFF;
-  opacity: 1 !important;
-  transition: var(--ease-editorial);
+  transition: var(--ease-couture);
+}
+
+.product-card-shell:hover {
+  transform: translateY(-6px);
+  border-color: rgba(197, 168, 128, 0.4);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.05);
 }
 
 .product-media-container {
   position: relative;
-  aspect-ratio: 3 / 4.2;
+  aspect-ratio: 3 / 4.3;
   overflow: hidden;
   background: #F5F1EB;
+  border-radius: var(--radius-inner);
   margin-bottom: 18px;
 }
 
@@ -571,13 +625,13 @@ button {
   transition: opacity 0.6s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.product-card:hover .product-main-image {
-  transform: scale(1.04);
+.product-card-shell:hover .product-main-image {
+  transform: scale(1.05);
 }
 
-.product-card:hover .product-hover-image {
+.product-card-shell:hover .product-hover-image {
   opacity: 1;
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 .product-badge-pill {
@@ -588,9 +642,10 @@ button {
   color: var(--vv-champagne-gold);
   font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  padding: 6px 12px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
   z-index: 2;
 }
 
@@ -598,10 +653,11 @@ button {
   position: absolute;
   top: 14px;
   right: 14px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--vv-noir);
   width: 36px;
   height: 36px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -620,15 +676,15 @@ button {
   left: 0;
   right: 0;
   padding: 12px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(8px);
   transform: translateY(100%);
   opacity: 0;
-  transition: var(--ease-editorial);
+  transition: var(--ease-couture);
   z-index: 3;
 }
 
-.product-card:hover .product-quick-actions {
+.product-card-shell:hover .product-quick-actions {
   transform: translateY(0);
   opacity: 1;
 }
@@ -640,9 +696,10 @@ button {
   font-family: var(--font-sans);
   font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   padding: 12px;
+  border-radius: var(--radius-pill);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -656,13 +713,14 @@ button {
 
 .product-info-box {
   text-align: center;
+  padding: 0 10px 10px;
 }
 
 .product-artisan-tag {
   font-family: var(--font-sans);
   font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--vv-champagne-gold);
   margin-bottom: 6px;
@@ -671,7 +729,7 @@ button {
 
 .product-title {
   font-family: var(--font-editorial);
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   color: var(--vv-noir);
@@ -694,14 +752,14 @@ button {
   font-family: var(--font-sans);
   font-size: 0.95rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: var(--vv-noir);
 }
 
 .price-compare {
   font-family: var(--font-sans);
   font-size: 0.85rem;
-  color: var(--vv-text-dim);
+  color: var(--vv-text-muted);
   text-decoration: line-through;
 }
 
@@ -709,7 +767,7 @@ button {
    Heritage Story - Editorial Split Layout
    ========================================================================== */
 .heritage-story-section {
-  padding: 140px 0;
+  padding: 150px 0;
   background: var(--vv-noir-soft);
   color: #FAF8F5;
   position: relative;
@@ -724,7 +782,7 @@ button {
 
 .heritage-quote {
   font-family: var(--font-editorial);
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-style: italic;
   font-weight: 300;
   line-height: 1.45;
@@ -737,7 +795,7 @@ button {
 .heritage-desc {
   font-family: var(--font-sans);
   font-size: 0.88rem;
-  line-height: 1.85;
+  line-height: 1.9;
   color: rgba(250, 248, 245, 0.75);
   margin-bottom: 40px;
 }
@@ -753,23 +811,24 @@ button {
 
 .pillar-number {
   font-family: var(--font-editorial);
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--vv-champagne-gold);
   display: block;
 }
 
 .pillar-label {
   font-size: 0.68rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(250, 248, 245, 0.6);
 }
 
 .heritage-main-img {
   width: 100%;
-  height: 560px;
+  height: 580px;
   object-fit: cover;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-inner);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
 }
 
 /* ==========================================================================
@@ -777,7 +836,7 @@ button {
    ========================================================================== */
 .trust-badges-section {
   background-color: var(--vv-linen-surface);
-  padding: 60px 0;
+  padding: 70px 0;
   border-top: 1px solid var(--vv-border-fine);
   border-bottom: 1px solid var(--vv-border-fine);
 }
@@ -790,22 +849,22 @@ button {
 }
 
 .trust-badge-card {
-  padding: 10px;
+  padding: 12px;
 }
 
 .trust-badge-title {
   font-family: var(--font-editorial);
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--vv-noir);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .trust-badge-sub {
-  font-size: 0.78rem;
-  color: var(--vv-text-dim);
+  font-size: 0.8rem;
+  color: var(--vv-text-muted);
   letter-spacing: 0.05em;
 }
 
@@ -815,7 +874,7 @@ button {
 .royal-footer {
   background: var(--vv-noir);
   color: #ECE5D8;
-  padding: 100px 0 40px;
+  padding: 110px 0 40px;
   border-top: 1px solid var(--vv-champagne-gold);
 }
 
@@ -828,9 +887,9 @@ button {
 
 .footer-brand-title {
   font-family: var(--font-editorial);
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: #FFF;
   text-transform: uppercase;
   margin-bottom: 14px;
@@ -838,7 +897,7 @@ button {
 
 .footer-brand-desc {
   font-size: 0.85rem;
-  line-height: 1.8;
+  line-height: 1.85;
   color: rgba(236, 229, 216, 0.7);
   margin-bottom: 24px;
 }
@@ -883,6 +942,7 @@ button {
   padding: 14px 18px;
   color: #FFF;
   font-size: 0.82rem;
+  border-radius: var(--radius-pill) 0 0 var(--radius-pill);
   outline: none;
 }
 
@@ -898,7 +958,8 @@ button {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 0 24px;
+  padding: 0 28px;
+  border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
 }
 
 .footer-bottom-row {
@@ -935,7 +996,7 @@ button {
   }
   .category-grid, .product-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
   }
   .trust-badges-grid {
     grid-template-columns: 1fr;

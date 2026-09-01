@@ -1,5 +1,5 @@
 {% comment %}
-  VastrVeda Haute Couture Editorial Hero
+  VastrVeda Haute Couture Editorial Hero (Taste + Impeccable Standard)
 {% endcomment %}
 
 <section class="hero-editorial-section">
@@ -26,7 +26,7 @@
 
   <div class="vv-container">
     <div class="hero-editorial-content">
-      <span class="hero-editorial-tag">
+      <span class="editorial-tag">
         {{ section.settings.badge_text | default: 'ATELIER JAIPUR • HAUTE COUTURE 2026' }}
       </span>
 
@@ -39,11 +39,16 @@
       </p>
 
       <div class="hero-editorial-ctas">
-        <a href="{{ section.settings.primary_btn_link | default: '/collections/wedding-wear' }}" class="btn-editorial-gold">
+        <a href="{{ section.settings.primary_btn_link | default: '/collections/wedding-wear' }}" class="btn-couture-gold">
           <span>{{ section.settings.primary_btn_text | default: 'Explore Wedding Couture' }}</span>
+          <span class="btn-icon-bubble">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
         </a>
 
-        <a href="{{ section.settings.secondary_btn_link | default: '/collections/kurti-sets' }}" class="btn-editorial-outline">
+        <a href="{{ section.settings.secondary_btn_link | default: '/collections/kurti-sets' }}" class="btn-couture-outline">
           <span>{{ section.settings.secondary_btn_text | default: 'Kurti Sets & Festive' }}</span>
         </a>
       </div>

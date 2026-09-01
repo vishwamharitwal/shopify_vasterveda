@@ -1,9 +1,9 @@
 {% comment %}
-  VastrVeda Editorial Product Card Snippet
+  VastrVeda Editorial Product Card Snippet (Double-Bezel Architecture)
   Usage: {% render 'card-product', product: product %}
 {% endcomment %}
 
-<div class="product-card">
+<div class="product-card-shell">
   <div class="product-media-container">
     {% if product.tags contains 'Bespoke' or product.tags contains 'Wedding' or product.tags contains 'Festive' %}
       <span class="product-badge-pill">
