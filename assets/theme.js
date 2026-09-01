@@ -80,17 +80,21 @@ function initGSAPAnimations() {
 
     // Product Cards Stagger
     if (document.querySelector('.product-grid')) {
-      gsap.from('.product-card', {
-        scrollTrigger: {
-          trigger: '.product-grid',
-          start: 'top 80%',
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.12,
-        ease: 'power3.out',
-      });
+      gsap.fromTo(
+        '.product-card',
+        { y: 20, opacity: 0.8 },
+        {
+          scrollTrigger: {
+            trigger: '.product-grid',
+            start: 'top 90%',
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power2.out',
+        }
+      );
     }
 
     // Heritage Story Parallax Reveal

@@ -111,16 +111,6 @@
             </button>
           </div>
 
-          <!-- WhatsApp Direct Consultation -->
-          <a 
-            href="https://wa.me/{{ settings.social_whatsapp_number | default: '919876543210' }}?text=Hello%20VastrVeda%2C%20I%20am%20interested%20in%20customizing%20{{ product.title | url_encode }}." 
-            target="_blank"
-            class="btn-royal-maroon" 
-            style="width: 100%; justify-content: center; margin-bottom: 30px; background: #1C3325;"
-          >
-            {% render 'icons', name: 'whatsapp' %}
-            <span>Bespoke Bridal Sizing on WhatsApp</span>
-          </a>
         {% endform %}
 
         <!-- Product Highlights Accordion -->
