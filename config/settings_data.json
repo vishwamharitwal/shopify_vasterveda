@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_primary_maroon": "#580A15",
@@ -6,6 +15,28 @@
     "color_text_dark": "#1C1917",
     "logo_width": 170,
     "social_instagram_link": "https://instagram.com/vastrveda",
-    "social_whatsapp_number": "+919876543210"
+    "social_whatsapp_number": "+919876543210",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "show_announcement": false,
+          "text_1": "Complimentary Royal Delivery Across India | Handcrafted in Jaipur",
+          "text_2": "New Festive Couture 2026 Live"
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_width": 170,
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    },
+    "content_for_index": []
   }
 }
