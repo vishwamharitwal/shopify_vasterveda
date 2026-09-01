@@ -14,14 +14,18 @@
       </div>
     </div>
 
-    {%- assign collection = collections[section.settings.collection] -%}
-    {% if collection == blank or collection.products_count == 0 %}
-      {%- assign collection = collections['all'] -%}
-    {% endif %}
+    {%- assign selected_col = collections[section.settings.collection] -%}
+    {%- if selected_col == blank or selected_col.products.size == 0 -%}
+      {%- assign selected_col = collections['all'] -%}
+    {%- endif -%}
 
     <div class="product-grid">
-      {% if collection != blank and collection.products_count > 0 %}
-        {% for product in collection.products limit: section.settings.products_to_show %}
+      {% if selected_col != blank and selected_col.products.size > 0 %}
+        {% for product in selected_col.products limit: section.settings.products_to_show %}
+          {% render 'card-product', product: product %}
+        {% endfor %}
+      {% elsif collections.all.products.size > 0 %}
+        {% for product in collections.all.products limit: section.settings.products_to_show %}
           {% render 'card-product', product: product %}
         {% endfor %}
       {% else %}
