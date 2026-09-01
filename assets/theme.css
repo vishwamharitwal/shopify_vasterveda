@@ -314,6 +314,13 @@ button {
   gap: 24px;
 }
 
+.mobile-menu-toggle {
+  display: none;
+  color: var(--vv-noir);
+  padding: 8px;
+  cursor: pointer;
+}
+
 .header-action-btn {
   color: var(--vv-noir);
   display: flex;
@@ -340,6 +347,24 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 990px) {
+  .header-nav-left {
+    display: none;
+  }
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .header-inner {
+    grid-template-columns: auto 1fr auto;
+    height: 76px;
+  }
+  .brand-logo-text {
+    font-size: 1.6rem;
+  }
 }
 
 /* ==========================================================================

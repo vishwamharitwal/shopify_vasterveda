@@ -1,49 +1,46 @@
 {% comment %}
-  VastrVeda Master Header & Navigation Section
+  VastrVeda Master Luxury Header & Navigation Section
+  Awwwards / Agency-Tier Architecture
 {% endcomment %}
 
 <header class="header-wrapper">
   <div class="vv-container">
     <div class="header-inner">
-      <!-- Left Navigation Menu -->
+      
+      <!-- Mobile Menu Toggle (Visible ONLY on Mobile < 992px) -->
+      <button class="mobile-menu-toggle" id="MobileMenuBtn" aria-label="Open Navigation Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <line x1="3" y1="8" x2="21" y2="8"></line>
+          <line x1="3" y1="16" x2="21" y2="16"></line>
+        </svg>
+      </button>
+
+      <!-- Desktop Left Navigation Menu -->
       <nav class="header-nav-left" aria-label="Main Navigation">
         {% for link in linklists.main-menu.links %}
           <a href="{{ link.url }}" class="nav-link {% if link.active %}active{% endif %}">
             {{ link.title }}
           </a>
         {% else %}
-          <!-- Default Fallback Links if Menu not configured in Shopify Admin -->
-          <a href="/collections/wedding-wear" class="nav-link has-badge">
-            Wedding Couture
-            <span class="nav-badge-hot">Royalty</span>
-          </a>
+          <!-- Fallback Links -->
+          <a href="/collections/wedding-wear" class="nav-link">Wedding Couture</a>
           <a href="/collections/lehengas" class="nav-link">Lehengas</a>
           <a href="/collections/kurti-sets" class="nav-link">Kurti Sets</a>
           <a href="/collections/festive-wear" class="nav-link">Festive Wears</a>
-          <a href="/pages/jaipur-heritage" class="nav-link">Our Heritage</a>
+          <a href="/pages/jaipur-heritage" class="nav-link">Jaipur Atelier</a>
         {% endfor %}
       </nav>
-
-      <!-- Mobile Hamburger Button -->
-      <button class="mobile-menu-toggle" id="MobileMenuBtn" aria-label="Open Navigation Menu">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
 
       <!-- Center Logo & Branding -->
       <div class="header-logo-center">
         <a href="/" class="brand-logo-text" aria-label="VastrVeda Home">
           {% if section.settings.logo != blank %}
-            <img src="{{ section.settings.logo | image_url: width: 340 }}" alt="{{ shop.name }}" width="{{ section.settings.logo_width }}" height="auto">
+            <img src="{{ section.settings.logo | image_url: width: 320 }}" alt="{{ shop.name }}" width="{{ section.settings.logo_width }}" height="auto">
           {% else %}
-            <span>{% render 'icons', name: 'lotus' %}</span>
-            <span class="gold-gradient-text">VastrVeda</span>
+            <span>VASTRVEDA</span>
           {% endif %}
         </a>
-        <span class="brand-tagline">Jaipur • Rajasthan</span>
+        <span class="brand-tagline">JAIPUR • RAJASTHAN</span>
       </div>
 
       <!-- Right Action Icons -->
@@ -61,24 +58,28 @@
           <span class="cart-count-bubble">{{ cart.item_count }}</span>
         </button>
       </div>
+
     </div>
   </div>
 </header>
 
 <!-- Mobile Navigation Drawer -->
-<div class="mobile-nav-drawer" id="MobileNavDrawer" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999;">
-  <div style="width: 300px; height: 100%; background: #FCFAF6; padding: 24px; display: flex; flex-direction: column; gap: 20px;">
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--vv-border-subtle); padding-bottom: 12px;">
-      <span style="font-family: var(--font-royal); font-weight: 700; color: var(--vv-maroon-primary);">VastrVeda</span>
-      <button type="button" id="CloseMobileNav" style="font-size: 1.2rem; color: var(--vv-maroon-deep);">✕</button>
+<div class="mobile-nav-drawer" id="MobileNavDrawer" style="display: none; position: fixed; inset: 0; background: rgba(14, 12, 13, 0.7); backdrop-filter: blur(8px); z-index: 999;">
+  <div style="width: 320px; height: 100%; background: #FAF8F5; padding: 32px 24px; display: flex; flex-direction: column; gap: 24px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(28, 25, 26, 0.1); padding-bottom: 16px;">
+      <div>
+        <span style="font-family: var(--font-editorial); font-size: 1.4rem; letter-spacing: 0.12em; font-weight: 500; color: var(--vv-noir);">VASTRVEDA</span>
+        <span style="display: block; font-size: 0.6rem; letter-spacing: 0.25em; color: var(--vv-champagne-gold);">JAIPUR • RAJASTHAN</span>
+      </div>
+      <button type="button" id="CloseMobileNav" style="font-size: 1.2rem; color: var(--vv-noir); padding: 4px;">✕</button>
     </div>
-    <div style="display: flex; flex-direction: column; gap: 16px; font-family: var(--font-royal); font-size: 0.95rem;">
-      <a href="/collections/wedding-wear" style="color: var(--vv-maroon-primary); font-weight: 600;">✨ Wedding Wears</a>
-      <a href="/collections/lehengas" style="color: var(--vv-charcoal);">👗 Lehengas</a>
-      <a href="/collections/kurti-sets" style="color: var(--vv-charcoal);">✨ Kurti Sets</a>
-      <a href="/collections/festive-wear" style="color: var(--vv-charcoal);">🎉 Festive Wears</a>
-      <a href="/pages/jaipur-heritage" style="color: var(--vv-charcoal);">📍 Jaipur Heritage</a>
-      <a href="/account" style="color: var(--vv-charcoal);">👤 My Account</a>
+    <div style="display: flex; flex-direction: column; gap: 20px; font-family: var(--font-sans); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;">
+      <a href="/collections/wedding-wear" style="color: var(--vv-crimson-velvet);">Wedding Couture</a>
+      <a href="/collections/lehengas" style="color: var(--vv-noir);">Lehengas</a>
+      <a href="/collections/kurti-sets" style="color: var(--vv-noir);">Kurti Sets</a>
+      <a href="/collections/festive-wear" style="color: var(--vv-noir);">Festive Wears</a>
+      <a href="/pages/jaipur-heritage" style="color: var(--vv-noir);">Jaipur Atelier</a>
+      <a href="/account" style="color: var(--vv-noir); padding-top: 12px; border-top: 1px solid rgba(28, 25, 26, 0.08);">My Account</a>
     </div>
   </div>
 </div>
