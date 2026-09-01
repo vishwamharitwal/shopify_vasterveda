@@ -1,5 +1,5 @@
 {% comment %}
-  VastrVeda Royal Product Card Snippet
+  VastrVeda Editorial Product Card Snippet
   Usage: {% render 'card-product', product: product %}
 {% endcomment %}
 
@@ -7,7 +7,7 @@
   <div class="product-media-container">
     {% if product.tags contains 'Bespoke' or product.tags contains 'Wedding' or product.tags contains 'Festive' %}
       <span class="product-badge-pill">
-        {% if product.tags contains 'Wedding' %}Wedding Couture{% elsif product.tags contains 'Festive' %}Festive Special{% else %}Jaipur Handcrafted{% endif %}
+        {% if product.tags contains 'Wedding' %}Wedding Couture{% elsif product.tags contains 'Festive' %}Festive Edition{% else %}Jaipur Atelier{% endif %}
       </span>
     {% endif %}
 
@@ -18,25 +18,25 @@
     <a href="{{ product.url }}" class="product-img-link">
       {% if product.featured_image %}
         <img 
-          src="{{ product.featured_image | image_url: width: 600 }}" 
+          src="{{ product.featured_image | image_url: width: 700 }}" 
           alt="{{ product.title | escape }}"
           class="product-main-image"
           loading="lazy"
-          width="600"
-          height="800"
+          width="700"
+          height="950"
         >
         {% if product.images[1] %}
           <img 
-            src="{{ product.images[1] | image_url: width: 600 }}" 
+            src="{{ product.images[1] | image_url: width: 700 }}" 
             alt="{{ product.title | escape }}"
             class="product-hover-image"
             loading="lazy"
-            width="600"
-            height="800"
+            width="700"
+            height="950"
           >
         {% endif %}
       {% else %}
-        <div style="background: #EFE9DE; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #8C7B7D;">
+        <div style="background: #F2EDE4; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #9A8E7F; min-height: 360px;">
           {% render 'icons', name: 'lotus' %}
         </div>
       {% endif %}
@@ -44,15 +44,14 @@
 
     <div class="product-quick-actions">
       {% if product.available %}
-        <form method="post" action="/cart/add" class="quick-add-form" style="flex: 1;">
+        <form method="post" action="/cart/add" class="quick-add-form" style="width: 100%;">
           <input type="hidden" name="id" value="{{ product.variants.first.id }}">
           <button type="submit" class="quick-add-btn">
-            {% render 'icons', name: 'cart' %}
-            <span>Add to Bag</span>
+            <span>Quick Add to Bag</span>
           </button>
         </form>
       {% else %}
-        <button type="button" class="quick-add-btn" style="background: #666; color: #fff;" disabled>
+        <button type="button" class="quick-add-btn" style="background: #888; color: #fff;" disabled>
           <span>Sold Out</span>
         </button>
       {% endif %}
@@ -60,7 +59,7 @@
   </div>
 
   <div class="product-info-box">
-    <span class="product-artisan-tag">Rooted in Jaipur</span>
+    <span class="product-artisan-tag">HANDCRAFTED IN JAIPUR</span>
     <h3 class="product-title">
       <a href="{{ product.url }}">{{ product.title }}</a>
     </h3>
